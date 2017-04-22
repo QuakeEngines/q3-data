@@ -129,28 +129,6 @@ textures/common/clip_full
     surfaceparm nomarks
 }
 
-textures/common/clip_full_metal
-{
-    qer_trans 0.3
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm trans
-    surfaceparm nomarks
-    surfaceparm metalsteps
-}
-
-textures/common/clip_full_wood
-{
-    qer_trans 0.3
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm trans
-    surfaceparm nomarks
-    surfaceparm woodsteps
-}
-
 textures/common/clip_missile
 {
     qer_trans 0.3
@@ -161,32 +139,6 @@ textures/common/clip_missile
     surfaceparm nomarks
     surfaceparm playerclip
     surfaceparm clipmissile
-}
-
-textures/common/clip_missile_metal
-{
-    qer_trans 0.3
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm trans
-    surfaceparm nomarks
-    surfaceparm playerclip
-    surfaceparm clipmissile
-    surfaceparm metalsteps
-}
-
-textures/common/clip_missile_wood
-{
-    qer_trans 0.3
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm trans
-    surfaceparm nomarks
-    surfaceparm playerclip
-    surfaceparm clipmissile
-    surfaceparm woodsteps
 }
 
 textures/common/clip_player
@@ -200,34 +152,6 @@ textures/common/clip_player
     surfaceparm noimpact
     surfaceparm nomarks
     surfaceparm playerclip
-}
-
-textures/common/clip_player_metal
-{
-    qer_trans 0.3
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm nonsolid
-    surfaceparm trans
-    surfaceparm noimpact
-    surfaceparm nomarks
-    surfaceparm playerclip
-    surfaceparm metalsteps
-}
-
-textures/common/clip_player_wood
-{
-    qer_trans 0.3
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm nonsolid
-    surfaceparm trans
-    surfaceparm noimpact
-    surfaceparm nomarks
-    surfaceparm playerclip
-    surfaceparm woodsteps
 }
 
 textures/common/clusterportal
@@ -423,21 +347,6 @@ textures/common/slick_player
     surfaceparm nomarks
     surfaceparm playerclip
     surfaceparm slick
-}
-
-textures/common/slick_player_metal
-{
-    qer_trans 0.5
-    qer_nocarve
-    surfaceparm nodraw
-    surfaceparm nolightmap
-    surfaceparm nonsolid
-    surfaceparm trans
-    surfaceparm noimpact
-    surfaceparm nomarks
-    surfaceparm playerclip
-    surfaceparm slick
-    surfaceparm metalsteps
 }
 
 textures/common/trigger
