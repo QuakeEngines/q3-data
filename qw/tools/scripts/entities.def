@@ -242,7 +242,7 @@ model="models/powerups/ammo/handgunam.md3"*/
 
 //=============================================================================
 
-/*QUAKED ammo_charge (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED
+/*QUAKED ammo_cartridge (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED
 Beam Gun ammo. Gives the player 50 by default.
 -------- KEYS --------
 wait: Time in seconds before item respawns after being picked up (default: 40, -1 = never respawn).
@@ -273,7 +273,7 @@ And this would turn it back off:
 "targetShaderName" "textures/proto2/redlight_off"
 "targetShaderNewName" "textures/proto2/redlight_off"
 -------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
-model="models/powerups/ammo/chargeam.md3"*/
+model="models/powerups/ammo/cartam.md3"*/
 
 //=============================================================================
 
@@ -2812,8 +2812,8 @@ model="models/weapons2/plasma/plasma.md3"*/
 
 //=============================================================================
 
-/*QUAKED weapon_prox_launcher (1 0 .5) (-16 -16 -16) (16 16 16) SUSPENDED
-Proximity Mine. A mine which checks for proximity of a player or a time out. In team play, the mines are differentiated by teams.
+/*QUAKED weapon_proxylauncher (1 0 .5) (-16 -16 -16) (16 16 16) SUSPENDED
+Proximity Mine Launcher. A mine which checks for proximity of a player or a time out. In team play, the mines are differentiated by teams.
 -------- KEYS --------
 wait: Time in seconds before item respawns after being picked up (default: 5, -1 = never respawn).
 random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
