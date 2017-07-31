@@ -1007,6 +1007,39 @@ HOLDABLE_* ENTITIES
 
 //=============================================================================
 
+/*QUAKED holdable_kamikaze (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED
+One use kamikaze item that can be picked up and used later. Does an initial wave of shock damage, knockback, then 200 damage to everything in a 256 radius. It kills the using player when used. Player can only carry one holdable item at a time.
+-------- KEYS --------
+wait: Time in seconds before item respawns after being picked up (default 60, -1 = never respawn).
+random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
+team: Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes).
+target: Picking up the item will trigger the entity this points to.
+targetname: A target_give entity can point to this for respawn freebies.
+targetShaderName: Points to the name of the original shader to swap out for triggerable shader entities (see notes).
+targetShaderNewName: Points to the name of the new shader to swap in for triggerable shader entities (see notes).
+notfree: When set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam: When set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle: When set to 1, entity will not spawn in Single Player mode (bot play mode).
+gametype: Defines the gametypes that will spawn this item. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
+!gametype: Similar to gametype, it contain list of game types to NOT spawn the entity in. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
+notbot: When set to 1, a bot will never seek out this item.
+-------- SPAWNFLAGS --------
+SUSPENDED: Item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+When the entity activates its targets, all shaders/textures in the map that were originally the same name as the targetShaderName value, will be changed to the targetShaderNewName value. For example, turning a light on:
+"targetShaderName" "textures/proto2/redlight_off"
+"targetShaderNewName" "textures/proto2/redlight_on"
+And this would turn it back off:
+"targetShaderName" "textures/proto2/redlight_off"
+"targetShaderNewName" "textures/proto2/redlight_off"
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+model="models/powerups/kamikazi.md3"*/
+
+//=============================================================================
 
 /*QUAKED holdable_medkit (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED
 Medkit that can be picked up and used later. Brings the player's health back to 100 when used. Player can only carry one holdable item at a time.
@@ -1039,40 +1072,6 @@ And this would turn it back off:
 "targetShaderNewName" "textures/proto2/redlight_off"
 -------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
 model="models/powerups/holdable/medkit.md3"*/
-
-//=============================================================================
-
-/*QUAKED holdable_kamikaze (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED
-One use kamikaze item that can be picked up and used later. Does an initial wave of shock damage, knockback, then 200 damage to everything in a 256 radius. It kills the using player when used. Player can only carry one holdable item at a time.
--------- KEYS --------
-wait: Time in seconds before item respawns after being picked up (default 60, -1 = never respawn).
-random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
-team: Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes).
-target: Picking up the item will trigger the entity this points to.
-targetname: A target_give entity can point to this for respawn freebies.
-targetShaderName: Points to the name of the original shader to swap out for triggerable shader entities (see notes).
-targetShaderNewName: Points to the name of the new shader to swap in for triggerable shader entities (see notes).
-notfree: When set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
-notteam: When set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
-notsingle: When set to 1, entity will not spawn in Single Player mode (bot play mode).
-gametype: Defines the gametypes that will spawn this item. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
-!gametype: Similar to gametype, it contain list of game types to NOT spawn the entity in. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
-notbot: When set to 1, a bot will never seek out this item.
--------- SPAWNFLAGS --------
-SUSPENDED: Item will spawn where it was placed in map and won't drop to the floor.
--------- NOTES --------
-The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
-
-When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
-
-When the entity activates its targets, all shaders/textures in the map that were originally the same name as the targetShaderName value, will be changed to the targetShaderNewName value. For example, turning a light on:
-"targetShaderName" "textures/proto2/redlight_off"
-"targetShaderNewName" "textures/proto2/redlight_on"
-And this would turn it back off:
-"targetShaderName" "textures/proto2/redlight_off"
-"targetShaderNewName" "textures/proto2/redlight_off"
--------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
-model="models/powerups/kamikazi.md3"*/
 
 //=============================================================================
 
@@ -1192,41 +1191,7 @@ model="models/powerups/ammo.md3"*/
 //=============================================================================
 
 /*QUAKED item_armor_body (.6 0 0) (-16 -16 -16) (16 16 16) SUSPENDED
-Red Armor - 100 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
--------- KEYS --------
-wait: Time in seconds before item respawns after being picked up (default: 25, -1 = never respawn).
-random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
-team: Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes).
-target: Picking up the item will trigger the entity this points to.
-targetname: A target_give entity can point to this for respawn freebies.
-targetShaderName: Points to the name of the original shader to swap out for triggerable shader entities (see notes).
-targetShaderNewName: Points to the name of the new shader to swap in for triggerable shader entities (see notes).
-notfree: When set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
-notteam: When set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
-notsingle: When set to 1, entity will not spawn in Single Player mode (bot play mode).
-gametype: Defines the gametypes that will spawn this item. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
-!gametype: Similar to gametype, it contain list of game types to NOT spawn the entity in. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
-notbot: When set to 1, a bot will never seek out this item.
--------- SPAWNFLAGS --------
-SUSPENDED: Item will spawn where it was placed in map and won't drop to the floor.
--------- NOTES --------
-The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
-
-When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
-
-When the entity activates its targets, all shaders/textures in the map that were originally the same name as the targetShaderName value, will be changed to the targetShaderNewName value. For example, turning a light on:
-"targetShaderName" "textures/proto2/redlight_off"
-"targetShaderNewName" "textures/proto2/redlight_on"
-And this would turn it back off:
-"targetShaderName" "textures/proto2/redlight_off"
-"targetShaderNewName" "textures/proto2/redlight_off"
--------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
-model="models/powerups/armor/armor_red.md3"*/
-
-//=============================================================================
-
-/*QUAKED item_armor_combat (1 .75 .3) (-16 -16 -16) (16 16 16) SUSPENDED
-Yellow Armor - 50 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
+Yellow Armor - 100 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
 -------- KEYS --------
 wait: Time in seconds before item respawns after being picked up (default: 25, -1 = never respawn).
 random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
@@ -1256,6 +1221,74 @@ And this would turn it back off:
 "targetShaderNewName" "textures/proto2/redlight_off"
 -------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
 model="models/powerups/armor/armor_yel.md3"*/
+
+//=============================================================================
+
+/*QUAKED item_armor_combat (1 .75 .3) (-16 -16 -16) (16 16 16) SUSPENDED
+Green Armor - 50 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
+-------- KEYS --------
+wait: Time in seconds before item respawns after being picked up (default: 25, -1 = never respawn).
+random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
+team: Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes).
+target: Picking up the item will trigger the entity this points to.
+targetname: A target_give entity can point to this for respawn freebies.
+targetShaderName: Points to the name of the original shader to swap out for triggerable shader entities (see notes).
+targetShaderNewName: Points to the name of the new shader to swap in for triggerable shader entities (see notes).
+notfree: When set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam: When set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle: When set to 1, entity will not spawn in Single Player mode (bot play mode).
+gametype: Defines the gametypes that will spawn this item. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
+!gametype: Similar to gametype, it contain list of game types to NOT spawn the entity in. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
+notbot: When set to 1, a bot will never seek out this item.
+-------- SPAWNFLAGS --------
+SUSPENDED: Item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+When the entity activates its targets, all shaders/textures in the map that were originally the same name as the targetShaderName value, will be changed to the targetShaderNewName value. For example, turning a light on:
+"targetShaderName" "textures/proto2/redlight_off"
+"targetShaderNewName" "textures/proto2/redlight_on"
+And this would turn it back off:
+"targetShaderName" "textures/proto2/redlight_off"
+"targetShaderNewName" "textures/proto2/redlight_off"
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+model="models/powerups/armor/armor_gre.md3"*/
+
+//=============================================================================
+
+/*QUAKED item_armor_full (1 .75 .3) (-16 -16 -16) (16 16 16) SUSPENDED
+Red Armor - 200 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
+-------- KEYS --------
+wait: Time in seconds before item respawns after being picked up (default: 25, -1 = never respawn).
+random: Random time variance in seconds added or subtracted from "wait" delay (default: 0 - see notes).
+team: Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes).
+target: Picking up the item will trigger the entity this points to.
+targetname: A target_give entity can point to this for respawn freebies.
+targetShaderName: Points to the name of the original shader to swap out for triggerable shader entities (see notes).
+targetShaderNewName: Points to the name of the new shader to swap in for triggerable shader entities (see notes).
+notfree: When set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam: When set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle: When set to 1, entity will not spawn in Single Player mode (bot play mode).
+gametype: Defines the gametypes that will spawn this item. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
+!gametype: Similar to gametype, it contain list of game types to NOT spawn the entity in. Gametype names should be separated with a comma or space. Values: single ffa team ctf oneflag obelisk harvester.
+notbot: When set to 1, a bot will never seek out this item.
+-------- SPAWNFLAGS --------
+SUSPENDED: Item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+When the entity activates its targets, all shaders/textures in the map that were originally the same name as the targetShaderName value, will be changed to the targetShaderNewName value. For example, turning a light on:
+"targetShaderName" "textures/proto2/redlight_off"
+"targetShaderNewName" "textures/proto2/redlight_on"
+And this would turn it back off:
+"targetShaderName" "textures/proto2/redlight_off"
+"targetShaderNewName" "textures/proto2/redlight_off"
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+model="models/powerups/armor/armor_red.md3"*/
 
 //=============================================================================
 
